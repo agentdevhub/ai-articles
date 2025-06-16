@@ -5,6 +5,7 @@ description = "Daily crawl article about AI and use LLMs to summarize them"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "arxiv>=2.1.3"
+    "arxiv>=2.1.3",
+    "aiohttp>=3.12.13"
 ]
 license = "Apache-2.0"

@@ -234,7 +234,7 @@ if __name__ == "__main__":
     # --- 搜索和收集论文 ---
     filter_agent = ArxivLLMAgentFilter()
     print("开始搜索LLM-based Agent相关论文...")
-    results_list = filter_agent.filter_and_collect(days_back=1, max_per_topic=3)
+    results_list = filter_agent.filter_and_collect(days_back=1, max_per_topic=10)
     if results_list:
         # 保存原始结果
         filter_agent.save_results_to_jsonl(results_list, args.path)

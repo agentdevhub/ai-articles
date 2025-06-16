@@ -13,6 +13,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # ✅ 必须添加这行才有 push 权限
 
     steps:
     - uses: actions/checkout@v4
