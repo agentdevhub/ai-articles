@@ -12,65 +12,100 @@ class ArxivLLMAgentFilter:
         初始化客户端和关键词。
         """
         self.client = arxiv.Client()
-        
         # 更细化的 Agent/LLM 相关主题
         self.topic_keywords = {
-            # 1. 安全、伦理与法规
-            '安全与伦理': [
-                'agent safety', 'agent robustness', 'adversarial attack',
-                'ethics in AI', 'AI governance', 'safety alignment',
-                'risk assessment', 'compliance', 'AI regulation'
+            # 1. Agentic AI核心概念 (2025年最热门)
+            'Agentic系统': [
+                'Agentic AI', 'Agentic System', 'Autonomous Agents', 
+                'Goal-Driven Agents', 'Self-Governing Agents',
+                'Agent Orchestration', 'Agent Autonomy'
             ],
-            # 2. 性能评估与基准测试
+            
+            # 2. 性能评估与基准测试 (更精准)
             '评估与基准': [
-                'agent benchmark', 'agent evaluation', 'llm benchmark',
-                'performance metrics', 'evaluation dataset', 'zero-shot',
-                'few-shot', 'accuracy', 'latency analysis'
+                'Agent Benchmark', 'Agentic Evaluation', 'Agent Performance',
+                'Task-Oriented Evaluation', 'Agent Capability Assessment',
+                'Real-World Agent Evaluation', 'Agent Reliability Metrics'
             ],
-            # 3. 记忆与知识管理
-            '短期记忆和上下文': [
-                'episodic memory', 'context window', 'context tracking',
-                'sliding window', 'prompt chunking'
+            
+            # 3. 记忆与状态管理 (重新聚焦)
+            '持久记忆系统': [
+                'Persistent Memory', 'Agent Memory Architecture', 
+                'Episodic Memory Agents', 'Memory Consolidation',
+                'Stateful Agents', 'Context Persistence'
             ],
-            '长期知识与检索': [
-                'retrieval augmented generation', 'external knowledge',
-                'knowledge base', 'memory consolidation',
-                'long-term memory', 'semantic retrieval'
+            '动态上下文': [
+                'Dynamic Context', 'Context Switching', 'Adaptive Context',
+                'Contextual Reasoning', 'Context-Aware Agents'
             ],
-            # 4. 工具调用与推理
-            '工具集成': [
-                'tool use', 'function calling', 'API integration',
-                'tool-augmented reasoning', 'external tool', 'plugin'
+            
+            # 4. 任务规划与执行 (核心热点)
+            '任务分解与规划': [
+                'Task Decomposition', 'Hierarchical Planning', 
+                'Goal Decomposition', 'Task Orchestration',
+                'Multi-Step Planning', 'Dynamic Task Planning'
             ],
-            '复杂推理': [
-                'chain-of-thought', 'multi-step reasoning',
-                'symbolic reasoning', 'logic inference', 'planning',
-                'search-based reasoning'
+            '工具调用与集成': [
+                'Tool-Using Agents', 'Function Calling Agents',
+                'API Orchestration', 'Tool Composition',
+                'External Tool Integration', 'MCP Protocol'
             ],
-            # 5. 多智能体协作
-            '多智能体系统': [
-                'multi-agent collaboration', 'emergent behavior',
-                'agent communication', 'cooperative agents',
-                'competitive agents', 'market simulation'
+            
+            # 5. 多智能体系统 (更具体化)
+            '多智能体协作': [
+                'Multi-Agent Collaboration', 'Agent Coordination',
+                'Collaborative Agents', 'Agent Communication Protocols',
+                'Swarm Intelligence', 'Collective Intelligence'
             ],
-            # 6. 人机交互与可用性
-            '对话与交互': [
-                'conversational agent', 'dialogue management',
-                'natural language interface', 'turn-taking',
-                'user feedback loop'
+            '智能体编排': [
+                'Agent Orchestration', 'Agent Workflow', 
+                'Multi-Agent Systems', 'Agent Ecosystem',
+                'Agent Marketplace', 'Agent Mesh'
             ],
-            '用户体验与可用性': [
-                'UX evaluation', 'usability study', 'human-in-the-loop',
-                'interface design', 'accessibility'
+            
+            # 6. 人机协作 (强调双向性)
+            '人机协作': [
+                'Human-AI Collaboration', 'Human-in-the-Loop Agents',
+                'Bidirectional Human-AI', 'Collaborative Intelligence',
+                'Human-Agent Teaming', 'Interactive Agents'
+            ],
+            '对话式智能体': [
+                'Conversational Agents', 'Dialogue Agents',
+                'Natural Language Agents', 'Chatbot Agents',
+                'Voice Agents', 'Multimodal Interaction'
+            ],
+            
+            # 7. 领域特化应用 (新增热点)
+            '科学发现': [
+                'Scientific Discovery Agents', 'Research Automation',
+                'Hypothesis Generation', 'Literature Agents',
+                'Experimental Design Agents'
+            ],
+            '代码生成与软件': [
+                'Code Generation Agents', 'Software Development Agents',
+                'Programming Assistants', 'Automated Coding',
+                'Code Review Agents'
+            ],
+            
+            # 8. 新兴技术方向
+            '多模态智能体': [
+                'Multimodal Agents', 'Vision-Language Agents',
+                'Embodied Agents', 'Robotic Agents',
+                'Sensory Agents'
+            ],
+            '可解释性与治理': [
+                'Explainable Agents', 'Agent Governance',
+                'Agent Safety', 'Transparent Agents',
+                'Agent Alignment', 'Controllable Agents'
             ]
         }
 
-        # 核心通用检索关键词
+        # 核心通用检索关键词 (更聚焦)
         self.core_keywords = [
-            'Large Language Model', 'LLM', 'GPT-4', 'ChatGPT',
-            'RAG', 'Retrieval Augmented', 'Prompt Engineering',
-            'chain-of-thought', 'few-shot learning', 'zero-shot learning',
-            'fine-tuning', 'in-context learning'
+            'Agentic AI', 'Autonomous Agents', 'AI Agents',
+            'LLM Agents', 'Language Agents', 'Intelligent Agents',
+            'Agent Framework', 'Agent System', 'Multi-Agent',
+            'Tool-Using Agents', 'Reasoning Agents', 'Planning Agents'
         ]
 
 
@@ -232,7 +267,7 @@ if __name__ == "__main__":
     # --- 搜索和收集论文 ---
     filter_agent = ArxivLLMAgentFilter()
     print("开始搜索LLM-based Agent相关论文...")
-    results_list = filter_agent.filter_and_collect(days_back=3, max_per_topic=5)
+    results_list = filter_agent.filter_and_collect(days_back=7, max_per_topic=5)
     if results_list:
         # 保存原始结果
         filter_agent.save_results_to_jsonl(results_list, args.path)
