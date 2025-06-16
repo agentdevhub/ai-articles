@@ -198,11 +198,9 @@ class ArxivLLMAgentFilter:
         
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         if filename is None:
-            filename_base = f'llm_agent_papers_{timestamp}'
+            jsonl_file = f'llm_agent_papers_{timestamp}.jsonl'
         else:
-            filename_base = filename
-
-        jsonl_file = f'{filename_base}.jsonl'
+            jsonl_file = filename
         
         try:
             with open(jsonl_file, 'w', encoding='utf-8') as f:
@@ -234,7 +232,7 @@ if __name__ == "__main__":
     # --- 搜索和收集论文 ---
     filter_agent = ArxivLLMAgentFilter()
     print("开始搜索LLM-based Agent相关论文...")
-    results_list = filter_agent.filter_and_collect(days_back=1, max_per_topic=10)
+    results_list = filter_agent.filter_and_collect(days_back=3, max_per_topic=5)
     if results_list:
         # 保存原始结果
         filter_agent.save_results_to_jsonl(results_list, args.path)

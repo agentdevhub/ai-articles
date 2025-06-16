@@ -110,4 +110,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", type=str, help="Path to the jsonline file")
     args = parser.parse_args()
-    render_to_markdown(args.data, "output.md")
+    original_jsonl_file = args.data
+    md_file = original_jsonl_file.replace('_zh.jsonl', '.md')
+    render_to_markdown(original_jsonl_file, md_file)
