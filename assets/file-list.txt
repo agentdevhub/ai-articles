@@ -1,3 +1,2 @@
 ./2025-06-16.jsonl
 ./2025-06-16_zh.jsonl
-./example.jsonl
