@@ -1,7 +1,7 @@
 [project]
-name = "daily-arxiv"
+name = "daily-ai-article"
 version = "0.1.0"
-description = "Daily crawl arXiv papers and use LLMs to summarize them"
+description = "Daily crawl article about AI and use LLMs to summarize them"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
